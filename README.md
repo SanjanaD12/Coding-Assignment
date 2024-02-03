@@ -3,16 +3,17 @@ The Python code for the "A permutation Check" assignment is available in this re
 from collections import Counter
 
 Code Python :
+
 def is_permutation_present(pattern, text):
-    # Create counters for the given pattern and initial portion of the text
+    
     pattern_counter = Counter(pattern)
     text_counter = Counter(text[:len(pattern)])
 
-    # Check if the initial portion of the text is a permutation of the pattern
+   
     if pattern_counter == text_counter:
         return "YES"
 
-    # Iterate through the remaining part of the text using the sliding window technique
+   
     for i in range(len(pattern), len(text)):
         # Update the text_counter for the sliding window
         text_counter[text[i - len(pattern)]] -= 1
@@ -20,11 +21,11 @@ def is_permutation_present(pattern, text):
             del text_counter[text[i - len(pattern)]]
         text_counter[text[i]] += 1
 
-        # Check if the current window is a permutation of the pattern
+        
         if pattern_counter == text_counter:
             return "YES"
 
-    # If no permutation is found, return "NO"
+    
     return "NO"
 
 # Sample Input
